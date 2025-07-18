@@ -22,6 +22,5 @@ type DatosSensor struct {
 
 	MLX90614 struct {
 		TempObjeto   float64 `json:"temp_objeto"`
-		TempAmbiente float64 `json:"temp_ambiente"`
-	} `json:"mlx90614"`
+	} `json:"mlx90614"`	
 }
