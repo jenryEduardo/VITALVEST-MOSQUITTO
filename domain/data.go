@@ -21,6 +21,7 @@ type DatosSensor struct {
 	} `json:"mpu6050"`
 
 	MLX90614 struct {
+		TemperaturaAmbiente float64 `json:"temperatura_ambiente"`
 		TempObjeto   float64 `json:"temp_objeto"`
 	} `json:"mlx90614"`	
 }

@@ -30,13 +30,19 @@ func MessageHandler(client mqtt.Client, msg mqtt.Message) {
 		return
 	}
 
- 	// Enviar al servidor
-	resp, err := http.Post("http://localhost:8080/sendData", "application/json", bytes.NewBuffer(jsonData))
-	if err != nil {
-		log.Printf("Error al enviar datos al servidor: %v\n", err)
-		return
+	// Lista de endpoints a los que se enviará el objeto completo
+	endpoints := []string{
+		"http://localhost:3000/sendData",
+		"http://localhost:8085/AMQP/",
 	}
-	defer resp.Body.Close()
 
-	fmt.Printf("Respuesta del servidor: %s\n", resp.Status)
+	for _, url := range endpoints {
+		resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonData))
+		if err != nil {
+			log.Printf("Error al enviar datos a '%s': %v\n", url, err)
+			continue
+		}
+		defer resp.Body.Close()
+		fmt.Printf("✅ Datos enviados a '%s'. Respuesta: %s\n", url, resp.Status)
+	}
 }
