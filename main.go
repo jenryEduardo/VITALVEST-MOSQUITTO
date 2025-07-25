@@ -22,7 +22,7 @@ func main() {
 		}
 		fmt.Println(" Suscrito al topic 'sensores/datos'")
 
-		// Suscribirse al tópico 'GSR-SENSOR' con su handler específico
+		// // Suscribirse al tópico 'GSR-SENSOR' con su handler específico
 		if token := c.Subscribe("GSR-SENSOR", 0, controllers.MessageHandler); token.Wait() && token.Error() != nil {
 			log.Fatalf(" Error al suscribirse a 'GSR-SENSOR': %v", token.Error())
 		}
