@@ -47,7 +47,7 @@ func MessageHandler(client mqtt.Client, msg mqtt.Message) {
 
 		case "GSR-SENSOR":
 			var gsr struct {
-				Porcentaje int `json:"porcentaje"`
+				Porcentaje float64 `json:"porcentaje"`
 			}
 			if err := json.Unmarshal(msg.Payload(), &gsr); err != nil {
 				log.Printf("❌ Error al parsear GSR: %v", err)

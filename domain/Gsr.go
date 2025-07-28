@@ -2,5 +2,5 @@ package domain
 
 
 type GSR struct{
-	Porcentaje int
+	Porcentaje float64
 }
