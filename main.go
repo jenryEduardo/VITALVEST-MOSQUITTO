@@ -10,7 +10,7 @@ import (
 
 func main() {
 	opts := mqtt.NewClientOptions().
-		AddBroker("tcp://52.203.81.35:1883").
+		AddBroker("tcp://98.88.64.56:1883").
 		SetClientID("go-mqtt-client")
 
 	opts.OnConnect = func(c mqtt.Client) {
